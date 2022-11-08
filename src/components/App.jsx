@@ -1,16 +1,14 @@
-export const App = () => {
+import Contacts from "./Contacts"
+import { Toaster } from 'react-hot-toast'
+
+export default function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+    <>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
+      <Contacts />
+    </>
+  )
+}
