@@ -1,24 +1,24 @@
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
-import { LabelText, Input, FormBtn } from './PhonebookStyled';
+import { LabelText, Input, FormBtn } from './FormStyled';
 import { useState } from 'react';
 
 
 export default function Form({onSubmit}) {
     const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [number, setNumber] = useState('');
 
     const nameId = nanoid();
-    const phoneId = nanoid();
+    const numberId = nanoid();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         switch (name) {
             case 'name':
                 return setName(value);
-            case 'phone':
-                return setPhone(value);
+            case 'number':
+                return setNumber(value);
             default:
                 return;
         }
@@ -26,9 +26,9 @@ export default function Form({onSubmit}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({name, phone});
+        onSubmit({name, number});
         setName('');
-        setPhone('');
+        setNumber('');
     }
 
   return (
@@ -50,9 +50,9 @@ export default function Form({onSubmit}) {
             <LabelText>Number:</LabelText>
             <Input
                 type="tel"
-                name="phone"
-                id={phoneId}
-                value={phone}
+                name="number"
+                id={numberId}
+                value={number}
                 onChange={handleChange}
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

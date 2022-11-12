@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { LabelText, Input } from './PhonebookStyled';
+import { LabelText, Input } from './FilterStyled';
 
 export default function Filter({ filter, handleChange }) {
     return (

@@ -6,17 +6,17 @@ import { selectFilter } from 'redux/filter/filter-selectors';
 import { fetchContacts, addContact, removeContact } from 'redux/contacts/contacts-operation';
 import { setFilter } from 'redux/filter/filter-slice';
 
-import Form from './Form';
-import ContactList from './ContactsList';
-import Filter from './Filter';
+import Form from '../../components/ContactsForm/Form';
+import ContactList from '../../components/ContactsList/ContactsList';
+import Filter from '../../components/Filter/Filter';
 
-import { Box, MainTitle, SecondTitle } from './PhonebookStyled';
-import Loader from './Loader';
+import { MainTitle, SecondTitle } from './ContactsPageStyled';
+import Loader from '../../components/Loader/Loader';
 
-export default function Contacts() {
+export default function ContactsPage() {
     const contacts = useSelector(selectContacts);
     const contactsCount = useSelector(selectNumberOfContacts);
-    const { loading, error } = useSelector(selectState);
+    const { loading } = useSelector(selectState);
     const filter = useSelector(selectFilter);
     const dispatch = useDispatch();
 
@@ -42,7 +42,7 @@ export default function Contacts() {
     const filteredContacts = selectFilteredContacts(filter, contacts);
 
     return (
-        <Box>
+        <>
             <MainTitle>Phonebook</MainTitle>
             <Form onSubmit={onAddContact}/>
             <SecondTitle>Contacts</SecondTitle>
@@ -54,8 +54,7 @@ export default function Contacts() {
                     <ContactList items={filteredContacts} removeContact={onRemoveContact} />
                 </>
             }
-            {!loading && contacts.length === 0 && <p><b>Your contacts list is empty</b></p>}
-            {error && <p><b>Oops, something went wrong</b></p>}   
-        </Box>
+            {!loading && contacts.length === 0 && <p><b>Your contacts list is empty</b></p>}  
+        </>
     )
 }

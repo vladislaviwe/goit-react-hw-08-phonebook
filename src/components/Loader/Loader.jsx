@@ -1,6 +1,5 @@
 import { Oval } from  'react-loader-spinner'
-import { LoaderContainer } from './PhonebookStyled'
-// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { LoaderContainer } from './LoaderStyled'
 
 export default function Loader() {
   return (
